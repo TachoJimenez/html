@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crear Grupo</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url("resources/fondo_inicio.jpg");
+        background-color: #89BED2;
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .logo img {
+        max-width: 200px;
+    }
+    .button {
+        background-color: #3B788B;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .button:hover {
+        background-color: #265A6C;
+    }
+    .form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    .form-group input[type="text"],
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <img src="resources\letras.png" alt="Logo">
+        </div>
+        <a href="http://localhost/ProyectosHTML/MenuMaestro.html" class="button">Regresar</a>
+    </div>
+    <div class="form-container">
+        <h2>Crear Grupo</h2>
+        <div class="form-group">
+            <label for="nombre_grupo">Nombre del grupo:</label>
+            <input type="text" id="nombre_grupo" name="nombre_grupo">
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="5"></textarea>
+        </div>
+        <button type="button" onclick="crearGrupo()" class="button">Crear Grupo</button>
+    </div>
+</div>
+<script>
+    function crearGrupo() {
+        var nombreGrupo = document.getElementById('nombre_grupo').value;
+        var descripcion = document.getElementById('descripcion').value;
+        // Aquí puedes agregar la lógica para crear el grupo
+        alert('Grupo creado: ' + nombreGrupo + '\nDescripción: ' + descripcion);
+    }
+</script>
+</body>
+</html>
+

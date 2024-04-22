@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis Grupos Docente</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url("resources/fondo_inicio.jpg");
+        background-color: #89BED2;
+        margin: 0;
+        padding: 0;
+        background-size: cover; /* Hacer que el fondo ocupe toda la ventana */
+    }
+    .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .logo img {
+        max-width: 200px;
+    }
+    .button {
+        background-color: #3B788B;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+    .button:hover {
+        background-color: #265A6C;
+    }
+    .table-container {
+        background-color: rgba(255, 255, 255, 0.8); /* Agregar transparencia al contenedor */
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <img src="resources\letras.png" alt="Logo">
+        </div>
+        <a href="http://localhost/ProyectosHTML/MenuMaestro.html" class="button">Regresar</a>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Grupo</th>
+                    <th>Nombre Grupo</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dato 1</td>
+                    <td>Dato 2</td>
+                    <td>Dato 3</td>
+                    <td>Dato 4</td>
+                </tr>
+                <!-- Agrega más filas según sea necesario -->
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+
+

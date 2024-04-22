@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis Grupos - Alumno</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url("resources/fondo_inicio.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+    .btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
+    .logo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .logo img {
+        width: 200px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <img src="resources/letras.png" alt="Logo">
+    </div>
+    <h1>Mis Grupos - Alumno</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Grupo</th>
+                <th>Curso</th>
+                <th>Profesor</th>
+                <th>Horario</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Aquí se insertarán las filas de la tabla dinámicamente con JavaScript -->
+        </tbody>
+    </table>
+    <button class="btn" onclick="window.location.href='http://localhost/ProyectosHTML/MenuAlumno.html'">Regresar</button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Obtener los parámetros num_control e id_grupo de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const num_control = urlParams.get('num_control');
+    const id_grupo = urlParams.get('id_grupo');
+
+    // Llamar al script PHP para obtener el grupo al que se ha unido el alumno
+    fetch(`ruta_a_tu_script_php?num_control=${num_control}&id_grupo=${id_grupo}`)
+    .then(response => response.json())
+    .then(data => {
+        if (Object.keys(data).length !== 0) {
+            // Si se devuelve un grupo, mostrar los detalles en la tabla
+            const tableBody = document.getElementById('table-body');
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${data.nombre_grupo}</td><td>${data.nombre_curso}</td><td>${data.nombre_profesor}</td><td>${data.horario}</td>`;
+            tableBody.appendChild(row);
+        } else {
+            // Si no se devuelve un grupo, mostrar un mensaje de error o manejar la situación según sea necesario
+            console.error('El alumno no está unido a este grupo.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al cargar el grupo:', error);
+    });
+});
+</script>
+</body>
+</html>

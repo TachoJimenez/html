@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <style>
+        /* Estilos CSS aquí */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url('resources/fondo_inicio.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .content {
+            max-width: 600px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #234e3e;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #18522e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Iniciar Sesión</h1>
+            <label for="login">Número de teléfono / Correo / Número de control / Cédula:</label>
+            <input type="text" id="login" name="login">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password">
+            <button id="loginBtn">Iniciar Sesión</button>
+            <p><a href="http://localhost/ProyectosHTML/RecuperarContraseña.html">¿Olvidaste tu contraseña? Haz clic aquí.</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            // Obtener el valor del campo de entrada del correo electrónico
+            var correo = document.getElementById('login').value;
+
+            // Verificar el tipo de usuario utilizando AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Respuesta recibida
+                        var tipoUsuario = xhr.responseText;
+                        console.error(tipoUsuario);
+                        // Redireccionar según el tipo de usuario
+                        if (tipoUsuario === 'profesor') {
+                            window.location.href = 'http://localhost/ProyectosHTML/MenuMaestro.html';
+                        } else if (tipoUsuario === 'alumno') {
+                            window.location.href = 'http://localhost/ProyectosHTML/MenuAlumno.html';
+                        } else {
+                            alert('Correo o contraseña incorrectos');
+                        }
+                    } else {
+                        console.error('Error en la solicitud AJAX: ' + xhr.status);
+                        alert('Se produjo un error en la solicitud AJAX. Consulte la consola para obtener más detalles.');
+                    }
+                }
+            };
+            xhr.onerror = function() {
+                console.error('Error de red al enviar la solicitud AJAX');
+                alert('Error de red al enviar la solicitud AJAX');
+            };
+            xhr.open('GET', 'verificar_tipo_usuario.php?correo=' + encodeURIComponent(correo));
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
